@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Previsualizar Auto - Okotoko</title>
+</head>
+<body>
+  <div class="vehicle-preview">
+    <!-- Imagen del vehículo -->
+    <div class="vehicle-image">
+      <img src="auto_preview.webp" alt="Auto en Previsualización">
+    </div>
+
+    <!-- Detalles del vehículo -->
+    <div class="vehicle-details">
+      <h2>Nombre del Vehículo</h2>
+      <p>
+        Descripción detallada del vehículo, resaltando sus características principales y ventajas.
+        Información sobre el rendimiento, el diseño y la tecnología incorporada.
+      </p>
+      <div class="vehicle-specs">
+        <div><strong>Marca:</strong> EjemploMarca</div>
+        <div><strong>Modelo:</strong> EjemploModelo</div>
+        <div><strong>Año:</strong> 2023</div>
+        <div><strong>Precio:</strong> $150 por día</div>
+      </div>
+    </div>
+
+    <!-- Días disponibles -->
+    <div class="available-days">
+      <h3>Días Disponibles</h3>
+      <div class="days-list">
+        <div class="day">Lunes</div>
+        <div class="day">Martes</div>
+        <div class="day">Miércoles</div>
+        <div class="day">Jueves</div>
+        <div class="day">Viernes</div>
+        <div class="day">Sábado</div>
+        <div class="day">Domingo</div>
+      </div>
+    </div>
+
+    <!-- Sección de Reseñas -->
+    <section id="reseñas" style="margin-top: 50px;">
+      <h2>Comentarios </h2>
+      
+      <textarea id="comentario" placeholder="Escribe tu opinión aquí..." rows="5" cols="50" style="display: block; margin-bottom: 10px;"></textarea>
+      
+      <button onclick="publicarComentario()" style="padding: 8px 16px;">Publicar Reseña</button>
+
+      <div id="lista-comentarios" style="margin-top: 20px;">
+        <!-- Aquí se mostrarán los comentarios publicados -->
+      </div>
+    </section>
+
+
+    <!-- Botón de Me Gusta -->
+    <section id="me-gusta" style="text-align: center; margin-top: 30px;">
+      <button id="boton-corazon" onclick="agregarAFavoritos()" style="background: none; border: none; cursor: pointer;">
+        ❤️
+      </button>
+      <p id="mensaje-favoritos" style="display: none;">¡Agregado a favoritos!</p>
+    </section>
+
+  </div>
+
+  <script>
+    function publicarComentario() {
+      var comentario = document.getElementById('comentario').value;
+      if (comentario.trim() !== "") {
+        var nuevaReseña = document.createElement('p');
+        nuevaReseña.textContent = comentario;
+        document.getElementById('lista-comentarios').appendChild(nuevaReseña);
+        document.getElementById('comentario').value = ""; // Limpiar textarea
+        alert('¡Reseña publicada!');
+      } else {
+        alert('Por favor, escribe algo antes de publicar.');
+      }
+    }
+    
+    function agregarAFavoritos() {
+      var mensaje = document.getElementById('mensaje-favoritos');
+      mensaje.style.display = 'block'; // Mostrar el mensaje
+      setTimeout(function() {
+        mensaje.style.display = 'none'; // Ocultar el mensaje después de 3 segundos
+      }, 3000); // El mensaje desaparece después de 3 segundos
+    }
+    </script>
+    
+</body>
+</html>
+
+<style>
+    body {
+      background-color: lightcyan;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .vehicle-preview {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 20px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+    .vehicle-image {
+      width: 100%;
+      max-height: 400px;
+      overflow: hidden;
+    }
+    .vehicle-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .vehicle-details {
+      margin-top: 20px;
+    }
+    .vehicle-details h2 {
+      margin-top: 0;
+    }
+    .vehicle-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    .vehicle-specs div {
+      flex: 1 1 200px;
+    }
+    .available-days {
+      margin-top: 30px;
+    }
+    .available-days h3 {
+      margin-bottom: 10px;
+    }
+    .days-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .day {
+      padding: 10px 15px;
+      background-color: #eee;
+      border-radius: 5px;
+    }
+  </style>
