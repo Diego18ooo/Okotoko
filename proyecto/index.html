@@ -4,6 +4,10 @@
     <title>Okotoko</title>
 </head>
 <body>
+    <div class="ocean">
+        <div class="wave"></div>
+        <div class="wave"></div>
+    </div>
     <div class="navbar">
         <div class="logo-container">
             <img src="logo.jpeg" alt="Logo">
@@ -15,6 +19,8 @@
             <a href="inicio_sesion.html">Iniciar Sesión</a>
         </div>
     </div>
+
+    
 
     <div class = "imagen-mamalona">
         <img src="car_banner2.jpg" alt="Banner">
@@ -49,6 +55,7 @@
 
         </form>
     </div>
+    
 
     <div class="contact" id="contacto">
         <h2>Contáctanos</h2>
@@ -61,11 +68,12 @@
         </div>
     </div>
 
+    
+
     <script>
         const imagenes = document.querySelectorAll('.carros-populares img');
 
-        imagenes.forEach(imagen => 
-        {
+        imagenes.forEach(imagen => {
             imagen.addEventListener('mouseenter', () => {
                 imagen.style.transform = 'scale(1.05)';
                 imagen.style.transition = 'transform 0.3s ease';
@@ -84,9 +92,60 @@
 </html>
 
 <style>
+
+    
+    .ocean {
+        height: 5%;
+        width: 100%;
+        position: fixed; /* <-- importante: antes era absolute */
+        bottom: 0;
+        left: 0;
+        background: #9ca3a5;
+    }
+
+    .wave {
+    background: url(https://cdn.kcak11.com/codepen_assets/wave_animation/wave.svg) repeat-x;
+    position: absolute;
+    top: -198px;
+    width: 6400px;
+    height: 198px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    transform: translate3d(0, 0, 0);
+    filter: brightness(0.1) grayscale(100%);
+    opacity: 0.2;
+    }
+
+    .wave:nth-of-type(2) {
+    top: -175px;
+    animation: wave 7s cubic-bezier(0.36, 0.45, 0.63, 0.53) -0.125s infinite, swell 7s ease -1.25s infinite;
+    opacity: 1;
+    }
+
+    @keyframes wave {
+    0% {
+        margin-left: 0;
+    }
+    100% {
+        margin-left: -1600px;
+    }
+    }
+    @keyframes swell {
+    0%,
+    100% {
+        transform: translate3d(0, -25px, 0);
+    }
+    50% {
+        transform: translate3d(0, 5px, 0);
+    }
+    }
+    .endWave{
+    display:none;
+    }
     
     body {
-        background-color: lightgray;
+        background-color: radial-gradient(ellipse at center, #fffeea 0%, #fffeea 35%, #95a3a4 100%);
+        height: auto;
+        min-height: 100%;
         margin: 0;
         font-family: Arial, sans-serif;
     }
